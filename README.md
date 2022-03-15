@@ -23,10 +23,10 @@ nnoremap N Nzzzv
 nnoremap J mzJ`z
 
 "undo break points
-inoremap , ,<C-g>u
-inoremap . .<C-g>u
-inoremap ! !<C-g>u
-inoremap ? ?<C-g>u
+"inoremap , ,<C-g>u
+"inoremap . .<C-g>u
+"inoremap ! !<C-g>u
+"inoremap ? ?<C-g>u
 
 "Jumplist mutations
 nnoremap <exp> k (v:count > 5 ? "m'" .  v.count : "") . 'k'
