@@ -1,10 +1,11 @@
 # IntellijVim
 
-:source ~/.ideavimrc
+To reload file:
+:source ~/.ideavimrc 
 
 --------------------
 
-
+--------------------
 
 set number relativenumber
 set idearefactormode=keep
@@ -14,37 +15,49 @@ set easymotion
 
 let mapleader = " "
 
+nnoremap Y y$
 
-inoremap jj <Esc>
-set timeoutlen=1000
+"keep it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
 
-noremap <Esc> <nop>
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
+"undo break points
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
 
- noremap <C-j> :m +1<CR>
+"Jumplist mutations
+nnoremap <exp> k (v:count > 5 ? "m'" .  v.count : "") . 'k'
+nnoremap <exp> j (v:count > 5 ? "m'" .  v.count : "") . 'j'
+
+"Moving text (first 2 lines doesn't work in ideaVim)
+"vnoremap J :m '>+1<CR>gv=gv
+"vnoremap K :m '<-2<CR>gv=gv
+noremap <C-j> :m +1<CR>
 nnoremap <C-k> :m -2<CR>
 inoremap <C-j> <Esc>:m +1<CR>gi
 inoremap <C-k> <Esc>:m -2<CR>gi
 
-" system clipboard
-vmap <leader>y "+y
-vmap <leader>d "+d
-nmap <leader>y "+yy
-nmap <leader>p "+p
-nmap <leader>P "+P
-vmap <leader>p "+p
-vmap <leader>P "+P
+"exit remap
+"inoremap jk <Esc>
+"set timeoutlen=1000
 
-" scrolling
-nmap <leader>j <C-d>
-nmap <leader>k <C-u>
-vmap <leader>j <C-d>
-vmap <leader>k <C-u>
+" system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nmap <leader>Y "+Y
+
+nmap <leader>p "+p
+vmap <leader>p "+p
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
 " actions
-nmap <leader>h <action>(PreviousTab)
-nmap <leader>l <action>(NextTab)
+nmap <C-h> <action>(PreviousTab)
+nmap <C-l> <action>(NextTab)
 nmap <leader>bd <action>(CloseEditor)
 nmap <leader>i <action>(Generate)
 nmap <leader>m <action>(Git.Menu)
